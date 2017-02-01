@@ -58,6 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\common\Person.cs">
+      <Link>Person.cs</Link>
+    </Compile>
     <Compile Include="ClientSocket.cs" />
     <Compile Include="ControllerClient.cs" />
     <Compile Include="Program.cs" />
