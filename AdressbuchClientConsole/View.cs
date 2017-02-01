@@ -20,6 +20,7 @@ namespace Adressbuch
             // Ausgabe Menue
             Console.WriteLine("1 - Suche Personen");
             Console.WriteLine("2 - Hole Adressbuch");
+            Console.WriteLine("3 - Neue Person hinzufuegen");
             Console.WriteLine("9 - Programmende");
             Console.Write("Ihre Auswahl> ");
         }
@@ -34,6 +35,31 @@ namespace Adressbuch
                 Console.WriteLine("======================================");
                 Console.WriteLine();
             }
+        }
+
+        public string fügeHinzuNeuePerson()
+        {
+            string person = "";
+
+            // Erstelle Personenobjekt mit Standartwerten
+            Person p = new Person("v", "n", "p", DateTime.Today);
+
+            var stringPropertyNamesAndValues = p.GetType()
+            .GetProperties()
+            .Where(pi => pi.GetGetMethod() != null)
+            .Select(pi => new
+            {
+                Name = pi.Name,
+                Value = pi.GetGetMethod().Invoke(p, null)
+            });
+
+            foreach (var pair in stringPropertyNamesAndValues)
+            {
+                Console.WriteLine("{0}: ", pair.Name);
+                person += Console.ReadLine() + ";";
+            }
+
+            return person;
         }
     }
 }

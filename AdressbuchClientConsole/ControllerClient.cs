@@ -59,7 +59,10 @@ namespace Adressbuch
                 case 2:
                     holeAdressbuch();
                     break;
-
+                // Person hinzufuegen
+                case 3:
+                    fügeHinzuNeuePerson();
+                    break;
                 case 9:
                     break;
 
@@ -189,6 +192,25 @@ namespace Adressbuch
             {
                 throw;
             }
+        }
+
+        private void fügeHinzuNeuePerson()
+        {
+            // Hier müsste eine Ausnahmebehandlung erfolgen
+            // falls keine Verbindung möglich ist
+            client = new ClientSocket(host, port);
+            // Verbindung mit Server herstellen
+            client.connect();
+
+            // Kommando senden
+            client.write((int)ServerCommand.ADDPERSON);
+
+            // Hole Kontaktdaten für neue Person
+            string person = view.fügeHinzuNeuePerson();
+
+            Console.WriteLine(person);
+            client.write(person);
+            client.close();
         }
 
         private Person convertString2Person(string _p)
