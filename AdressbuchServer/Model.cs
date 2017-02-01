@@ -13,7 +13,7 @@ namespace Adressbuch
     class Model
     {
         // Objektvariable für Zugriff auf Liste
-        private List<Person> personen;
+        public List<Person> personen { get; private set; }
 
 
         public Model()
@@ -21,7 +21,7 @@ namespace Adressbuch
             // Leere Liste erstellen
             personen = new List<Person>();
 
-            // Datensätze aus adressbuch.txt lesen,
+            // Datensätze aus adressbuch.csv lesen,
             // Person-Objekte erstellen und
             // der Liste hinzufügen
 
@@ -53,7 +53,7 @@ namespace Adressbuch
 
         }
 
-        // Liest die Datei adressbuch.txt und erstellt Person-Objekte
+        // Liest die Datei adressbuch.csv und erstellt Person-Objekte
         private bool leseAdressbuchDatei()
         {
             // Hiermit könnte Erfolg oder Misserfolg der
@@ -62,11 +62,11 @@ namespace Adressbuch
             bool rc = true;
 
             // automatische Freigabe der Ressource mittels using
-            using (StreamReader sr = new StreamReader(@"adressbuch.txt"))
+            using (StreamReader sr = new StreamReader(@"adressbuch.csv"))
             {
                 string zeile;
                 // Lesen bis Dateiende, Zeile für Zeile
-                while ( ( zeile = sr.ReadLine() ) != null )
+                while ((zeile = sr.ReadLine()) != null)
                 {
                     // Person-Objekt erstellen anhand gelesener Zeile
                     Person p = convertString2Person(zeile);
@@ -103,20 +103,37 @@ namespace Adressbuch
 
         private string convertPerson2String(Person _p)
         {
-            string person="";
+            string person = "";
 
             // Hier wird ein Person-Objekt in den String umgeformt
+            var g = _p.Geburtstag;
+            person = _p.Vorname + ";" + _p.Name + ";" + _p.Plz + ";" + g.Day + "." + g.Month + "." + g.Year;
 
             return person;
         }
 
 
-        // Schreibt die Person-Objekte in die Datei adressbuch.txt
+        // Schreibt die Person-Objekte in die Datei adressbuch.csv
         private bool schreibeAdressbuchDatei()
         {
-            bool rc = false;
 
-            return rc;
+            try
+            {
+                using (var sw = new StreamWriter(@"adressbuch.csv"))
+                {
+                    foreach (var p in personen)
+                    {
+                        sw.Write(convertPerson2String(p));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Fehler beim Schreiben der Datei: ");
+                Console.WriteLine(e.Message);
+            }
+
+            return true;
         }
 
         // Dient nur zu Testzwecken

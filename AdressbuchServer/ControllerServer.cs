@@ -76,15 +76,15 @@ namespace Adressbuch
                         break;
 
                     case ServerCommand.GETALLPERSONS:
-                        // holeAllePersonen()
+                        holeAllePersonen(client);
                         break;
 
                     case ServerCommand.ADDPERSON:
-                        // fügeHinzuNeuePerson()
+                        fügeHinzuNeuePerson(client);
                         break;
 
                     case ServerCommand.DELETEPERSON:
-                        // loeschePerson()
+                        loeschePerson(client);
                         break;
 
                     default:
@@ -129,17 +129,35 @@ namespace Adressbuch
             }
         }
 
-        private void holeAllePersonen()
+        private void holeAllePersonen(ClientSocket _c)
+        {
+            // Sende Client die Anzahl der gefundenen Personen
+            _c.write(model.personen.Count);
+
+            // Sende nun die Personendaten
+            if (model.personen.Count > 0)
+            {
+                string separator = ";";
+
+                foreach (Person p in model.personen)
+                {
+                    string data = p.Vorname + separator + p.Name + separator;
+                    data += p.Plz + separator + p.Geburtstag.Date.ToShortDateString();
+
+                    // Testausgabe
+                    Console.WriteLine(data);
+                    _c.write(data + "\n");
+                    Thread.Sleep(250);
+                }
+            }
+        }
+
+        private void fügeHinzuNeuePerson(ClientSocket _c)
         {
 
         }
 
-        private void fügeHinzuNeuePerson()
-        {
-
-        }
-
-        private void loeschePerson()
+        private void loeschePerson(ClientSocket _c)
         {
 
         }
