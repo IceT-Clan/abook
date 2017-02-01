@@ -46,7 +46,6 @@
     <Compile Include="ClientSocket.cs" />
     <Compile Include="ControllerServer.cs" />
     <Compile Include="Model.cs" />
-    <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerSocket.cs" />
