@@ -54,6 +54,7 @@ namespace Adressbuch
             // Hier wird ein Person-Objekt in den String umgeformt
             var g = this.Geburtstag;
             person = this.Vorname + ";" + this.Name + ";" + this.Plz + ";" + g.Day + "." + g.Month + "." + g.Year;
+			person += ";" + this.ID;
 
             return person;
         }
@@ -75,7 +76,7 @@ namespace Adressbuch
             DateTime datum = new DateTime(jahr, monat, tag);
 
             // Person-Objekt erstellen und der Liste hinzufügen
-            Person p = new Person(daten[0], daten[1], daten[2], datum, Convert.ToUInt32(daten[3]));
+            Person p = new Person(daten[0], daten[1], daten[2], datum, Convert.ToUInt32(daten[4]));
 
             return p;
         }

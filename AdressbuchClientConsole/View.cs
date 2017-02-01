@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace Adressbuch
 {
@@ -13,7 +14,6 @@ namespace Adressbuch
         // die View soll nach außen festgelegte
         // Methoden enthalten und austauschbar sein
         // z.B. durch ein Formular
-
 
         public void zeigeMenue()
         {
@@ -28,10 +28,12 @@ namespace Adressbuch
         {
             foreach (Person p in _personen)
             {
-                Console.WriteLine("======================================");
-                Console.WriteLine(p.Vorname + " " + p.Name);
-                Console.WriteLine(p.Plz);
-                Console.WriteLine(p.Geburtstag.Date.ToShortDateString());
+				Console.WriteLine("======================================");
+				var properties = typeof(Person).GetProperties();
+				foreach (var pair in properties)
+				{
+					Console.WriteLine(pair.Name + ": " + pair.GetValue(p));
+				}
                 Console.WriteLine("======================================");
                 Console.WriteLine();
             }
@@ -42,21 +44,16 @@ namespace Adressbuch
             string person = "";
 
             // Erstelle Personenobjekt mit Standartwerten
-            Person p = new Person("v", "n", "p", DateTime.Today);
+            Person p = new Person("v", "n", "p", DateTime.Today, 0);
 
-            var stringPropertyNamesAndValues = p.GetType()
-            .GetProperties()
-            .Where(pi => pi.GetGetMethod() != null)
-            .Select(pi => new
-            {
-                Name = pi.Name,
-                Value = pi.GetGetMethod().Invoke(p, null)
-            });
+			var properties = typeof(Person).GetProperties();
 
-            foreach (var pair in stringPropertyNamesAndValues)
+            foreach (var pair in properties)
             {
-                Console.WriteLine("{0}: ", pair.Name);
-                person += Console.ReadLine() + ";";
+				if (pair.Name != "ID") {
+					Console.WriteLine("{0}: ", pair.Name);
+					person += Console.ReadLine() + ";";
+				}
             }
 
             return person;

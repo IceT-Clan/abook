@@ -89,7 +89,7 @@ namespace Adressbuch
                 {
                     foreach (var p in personen)
                     {
-                        sw.Write(p.ToString());
+                        sw.Write(p.ToString() + "\n");
                     }
                 }
             }

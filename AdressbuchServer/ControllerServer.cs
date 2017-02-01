@@ -118,7 +118,8 @@ namespace Adressbuch
                 foreach (Person p in ergebnis)
                 {
                     string data = p.Vorname + separator + p.Name + separator;
-                    data += p.Plz + separator + p.Geburtstag.Date.ToShortDateString();
+                    data += p.Plz + separator + p.Geburtstag.Date.ToShortDateString() + separator;
+					data += p.ID;
 
                     // Testausgabe
                     Console.WriteLine(data);
@@ -143,7 +144,8 @@ namespace Adressbuch
                 foreach (Person p in model.personen)
                 {
                     string data = p.Vorname + separator + p.Name + separator;
-                    data += p.Plz + separator + p.Geburtstag.Date.ToShortDateString();
+                    data += p.Plz + separator + p.Geburtstag.Date.ToShortDateString() + separator;
+					data += p.ID;
 
                     // Testausgabe
                     Console.WriteLine(data);
@@ -157,7 +159,12 @@ namespace Adressbuch
 
         private void fügeHinzuNeuePerson(ClientSocket _c)
         {
-            var person = _c.readLine();
+            string person = _c.readLine();
+
+			// TODO ID-Berechnung
+			int id = 0;
+			person += id.ToString();
+
             this.model.fügeHinzuNeuePerson(person);
         }
 
