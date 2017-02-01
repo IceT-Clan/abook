@@ -122,8 +122,10 @@ namespace Adressbuch
 
                     // Testausgabe
                     Console.WriteLine(data);
+                    if (data.Contains('\n'))
+                        throw new InvalidOperationException();
                     _c.write(data + "\n");
-                    Thread.Sleep(100);
+                    Thread.Sleep(250);
                 }
             }
         }
@@ -145,6 +147,8 @@ namespace Adressbuch
 
                     // Testausgabe
                     Console.WriteLine(data);
+                    if (data.Contains('\n'))
+                        throw new InvalidOperationException();
                     _c.write(data + "\n");
                     Thread.Sleep(250);
                 }
@@ -153,7 +157,8 @@ namespace Adressbuch
 
         private void fügeHinzuNeuePerson(ClientSocket _c)
         {
-
+            var person = _c.readLine();
+            this.model.fügeHinzuNeuePerson(person);
         }
 
         private void loeschePerson(ClientSocket _c)

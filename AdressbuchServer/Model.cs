@@ -144,5 +144,50 @@ namespace Adressbuch
                 Console.WriteLine(p.Vorname + " : " + p.Name + " : " + p.Plz + " : " + p.Geburtstag.ToShortDateString());
             }
         }
+
+        public void fügeHinzuNeuePerson(string person)
+        {
+            this.personen.Add(convertString2Person(person));
+            this.schreibeAdressbuchDatei();
+        }
+
+        private uint findeFreieId()
+        {
+            //check first field
+            if(this.personen.ElementAt(0).ID > 0)
+            {
+                return 0;
+            }
+
+
+            int offset = 1;
+            int c = this.personen.Count;
+            while (true)
+            {
+                if(c-offset <= 10)
+                {
+                    uint oldId = this.personen.ElementAt(offset-1).ID;
+                    for(int i = offset; i < c; i++)
+                    {
+                        var id = this.personen.ElementAt(i).ID;
+                        if (id > oldId+1)
+                        {
+                            return oldId + 1;
+                        }
+                    }
+                }
+                int idplace = ((c-offset) / 2) + offset;
+                var pers = this.personen.ElementAt(idplace);
+                if (pers.ID > idplace)
+                {
+                    c = idplace;
+                }
+                else
+                {
+                    offset = idplace;
+                }
+            }
+        }
     }
+
 }

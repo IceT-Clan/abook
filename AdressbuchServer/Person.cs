@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,13 +36,14 @@ namespace Adressbuch
             set { geburtstag = value; }
         }
 
-        public Person(string _v, string _n, string _p, DateTime _g, uint _id)
+        public uint ID { get; set; }
+
+        public Person(string _v, string _n, string _p, DateTime _g)
         {
             vorname = _v;
             name = _n;
             plz = _p;
             geburtstag = _g;
-            this.ID = id;
         }
 
     }
