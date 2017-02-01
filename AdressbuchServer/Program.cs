@@ -14,6 +14,9 @@ namespace Adressbuch
             // Standardport ist 55555
             int port = 55555;
 
+            // Standarddatei
+            string addrbook_file = @"adressbuch.csv";
+
             // Eventuelle Argumente durchlaufen
             if (args.Length > 1)
             {
@@ -28,6 +31,9 @@ namespace Adressbuch
                         case "/port":
                             port = Convert.ToInt32(argument[1]);
                             break;
+                        case "/file":
+                            addrbook_file = Convert.ToString(argument[1]);
+                            break;
                         default:
                             break;
                     }
@@ -35,7 +41,7 @@ namespace Adressbuch
                 }
             }
 
-            ControllerServer c = new ControllerServer(port);
+            ControllerServer c = new ControllerServer(port, addrbook_file);
             c.start();
 
         }

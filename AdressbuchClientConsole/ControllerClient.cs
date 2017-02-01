@@ -204,11 +204,7 @@ namespace Adressbuch
 
             // Geburtsdatum umformen, um ein DateTime-Objekt
             // zu erstellen
-#if WIN32
-            char[] trenner = { '.' };
-#else
-			char[] trenner = { '/' };
-#endif
+            char[] trenner = { '.', '/' };
             string[] geburtsdatum = daten[3].Split(trenner);
 
             int tag = Convert.ToInt32(geburtsdatum[0]);

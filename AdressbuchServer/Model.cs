@@ -16,7 +16,7 @@ namespace Adressbuch
         public List<Person> personen { get; private set; }
 
 
-        public Model()
+        public Model(string _addrbook_file)
         {
             // Leere Liste erstellen
             personen = new List<Person>();
@@ -25,7 +25,7 @@ namespace Adressbuch
             // Person-Objekte erstellen und
             // der Liste hinzufügen
 
-            leseAdressbuchDatei();
+            leseAdressbuchDatei(_addrbook_file);
         }
 
         public List<Person> suchePersonen(string wert)
@@ -53,8 +53,8 @@ namespace Adressbuch
 
         }
 
-        // Liest die Datei adressbuch.csv und erstellt Person-Objekte
-        private bool leseAdressbuchDatei()
+        // Liest die Datei adressbuch.txt und erstellt Person-Objekte
+        private bool leseAdressbuchDatei(string _addrbook_file)
         {
             // Hiermit könnte Erfolg oder Misserfolg der
             // Methode zurückgemeldet werden
@@ -62,19 +62,18 @@ namespace Adressbuch
             bool rc = true;
 
             // automatische Freigabe der Ressource mittels using
-            using (StreamReader sr = new StreamReader(@"adressbuch.csv"))
+            StreamReader sr = new StreamReader(_addrbook_file);
+            string zeile;
+            // Lesen bis Dateiende, Zeile für Zeile
+            while ( ( zeile = sr.ReadLine() ) != null )
             {
-                string zeile;
-                // Lesen bis Dateiende, Zeile für Zeile
-                while ((zeile = sr.ReadLine()) != null)
-                {
-                    // Person-Objekt erstellen anhand gelesener Zeile
-                    Person p = convertString2Person(zeile);
+                // Person-Objekt erstellen anhand gelesener Zeile
+                Person p = convertString2Person(zeile);
 
-                    // Person-Objekt in die Liste einfügen
-                    personen.Add(p);
-                }
+                // Person-Objekt in die Liste einfügen
+                personen.Add(p);
             }
+            sr.Close();
 
             return rc;
         }

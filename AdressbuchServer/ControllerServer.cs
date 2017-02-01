@@ -28,9 +28,9 @@ namespace Adressbuch
         private Model model;
         private ServerSocket server;
 
-        public ControllerServer(int _port)
+        public ControllerServer(int _port, string _addrbook_file)
         {
-            model = new Model();
+            model = new Model(_addrbook_file);
 
             // Hier sollte eine Ausnahmebehandlung stattfinden
             // für den Fall, dass der Port bereits anderweitig
@@ -40,7 +40,6 @@ namespace Adressbuch
             // Testzwecke
             // List<Person> liste = model.suchePersonen("6");
             // Console.WriteLine(liste.Count);
-
         }
 
         // Mit dieser Methode wird der Controller gestartet
