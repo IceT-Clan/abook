@@ -36,6 +36,8 @@ namespace Adressbuch
             set { geburtstag = value; }
         }
 
+        public uint ID { get; set; }
+
         public Person(string _v, string _n, string _p, DateTime _g)
         {
             vorname = _v;
