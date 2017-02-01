@@ -125,7 +125,7 @@ namespace Adressbuch
                     // Console.WriteLine(person);
 
                     // Person-Objekt aus empfangenem String
-                    Person p = convertString2Person(person);
+                    Person p = Person.FromString(person);
 
                     // Person-Objekt in die Liste für die Anzeige
                     ergebnis.Add(p);
@@ -171,7 +171,7 @@ namespace Adressbuch
                         // Console.WriteLine(person);
 
                         // Person-Objekt aus empfangenem String
-                        Person p = convertString2Person(person);
+                        Person p = Person.FromString(person);
 
                         // Person-Objekt in die Liste für die Anzeige
                         ergebnis.Add(p);
@@ -190,37 +190,5 @@ namespace Adressbuch
                 throw;
             }
         }
-
-        private Person convertString2Person(string _p)
-        {
-            char[] separator = { ';' };
-            string[] daten = _p.Split(separator);
-
-            // Geburtsdatum umformen, um ein DateTime-Objekt
-            // zu erstellen
-            char[] trenner = { '.', '/' };
-            string[] geburtsdatum = daten[3].Split(trenner);
-
-            int tag = Convert.ToInt32(geburtsdatum[0]);
-            int monat = Convert.ToInt32(geburtsdatum[1]);
-            int jahr = Convert.ToInt32(geburtsdatum[2]);
-
-            DateTime datum = new DateTime(jahr, monat, tag);
-
-            // Person-Objekt erstellen und der Liste hinzufügen
-            Person p = new Person(daten[0], daten[1], daten[2], datum, Convert.ToUInt32(daten[3]));
-
-            return p;
-        }
-
-        private string convertPerson2String(Person _p)
-        {
-            string person = "";
-
-            // Hier wird ein Person-Objekt in den String umgeformt
-
-            return person;
-        }
-
     }
 }

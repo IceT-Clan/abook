@@ -69,7 +69,7 @@ namespace Adressbuch
             while ( ( zeile = sr.ReadLine() ) != null )
             {
                 // Person-Objekt erstellen anhand gelesener Zeile
-                Person p = convertString2Person(zeile);
+                Person p = Person.FromString(zeile);
 
                 // Person-Objekt in die Liste einfügen
                 personen.Add(p);
@@ -78,40 +78,6 @@ namespace Adressbuch
 
             return rc;
         }
-
-        private Person convertString2Person(string _p)
-        {
-            char[] separator = { ';' };
-            string[] daten = _p.Split(separator);
-
-            // Geburtsdatum umformen, um ein DateTime-Objekt
-            // zu erstellen
-            char[] trenner = { '.' };
-            string[] geburtsdatum = daten[3].Split(trenner);
-
-            int tag = Convert.ToInt32(geburtsdatum[0]);
-            int monat = Convert.ToInt32(geburtsdatum[1]);
-            int jahr = Convert.ToInt32(geburtsdatum[2]);
-
-            DateTime datum = new DateTime(jahr, monat, tag);
-
-            // Person-Objekt erstellen und der Liste hinzufügen
-            Person p = new Person(daten[0], daten[1], daten[2], datum, Convert.ToUInt32(daten[3]));
-
-            return p;
-        }
-
-        private string convertPerson2String(Person _p)
-        {
-            string person = "";
-
-            // Hier wird ein Person-Objekt in den String umgeformt
-            var g = _p.Geburtstag;
-            person = _p.Vorname + ";" + _p.Name + ";" + _p.Plz + ";" + g.Day + "." + g.Month + "." + g.Year;
-
-            return person;
-        }
-
 
         // Schreibt die Person-Objekte in die Datei adressbuch.csv
         private bool schreibeAdressbuchDatei()
@@ -123,7 +89,7 @@ namespace Adressbuch
                 {
                     foreach (var p in personen)
                     {
-                        sw.Write(convertPerson2String(p));
+                        sw.Write(p.ToString());
                     }
                 }
             }
@@ -148,7 +114,7 @@ namespace Adressbuch
 
         public void fügeHinzuNeuePerson(string person)
         {
-            this.personen.Add(convertString2Person(person));
+            this.personen.Add(Person.FromString(person));
             this.schreibeAdressbuchDatei();
         }
 
