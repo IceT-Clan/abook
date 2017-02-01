@@ -208,7 +208,7 @@ namespace Adressbuch
             DateTime datum = new DateTime(jahr, monat, tag);
 
             // Person-Objekt erstellen und der Liste hinzufügen
-            Person p = new Person(daten[0], daten[1], daten[2], datum);
+            Person p = new Person(daten[0], daten[1], daten[2], datum, Convert.ToUInt32(daten[3]));
 
             return p;
         }
