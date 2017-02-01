@@ -98,52 +98,46 @@ namespace Adressbuch
             // Hier müsste eine Ausnahmebehandlung erfolgen
             // falls keine Verbindung möglich ist
             client = new ClientSocket(host, port);
-            try
+
+            // Verbindung mit Server herstellen
+            client.connect();
+            
+            // Kommando senden
+            client.write((int)ServerCommand.FINDPERSONS);
+
+            // Suchstring senden
+            client.write(suchbegriff);
+
+            // Anzahl gefundener Personen lesen
+            int anzahl = client.read();
+
+            Console.WriteLine("Anzahl gefundener Personen: {0}", anzahl);
+
+            if (anzahl > 0)
             {
-                // Verbindung mit Server herstellen
-                client.connect();
-                
-                // Kommando senden
-                client.write((int)ServerCommand.FINDPERSONS);
+                List<Person> ergebnis = new List<Person>();
 
-                // Suchstring senden
-                client.write(suchbegriff);
-
-                // Anzahl gefundener Personen lesen
-                int anzahl = client.read();
-
-                Console.WriteLine("Anzahl gefundener Personen: {0}", anzahl);
-
-                if (anzahl > 0)
+                for (int i = 0; i < anzahl; i++)
                 {
-                    List<Person> ergebnis = new List<Person>();
+                    string person = client.readLine();
 
-                    for (int i = 0; i < anzahl; i++)
-                    {
-                        string person = client.readLine();
+                    // Testausgabe
+                    // Console.WriteLine(person);
 
-                        // Testausgabe
-                        // Console.WriteLine(person);
+                    // Person-Objekt aus empfangenem String
+                    Person p = convertString2Person(person);
 
-                        // Person-Objekt aus empfangenem String
-                        Person p = convertString2Person(person);
+                    // Person-Objekt in die Liste für die Anzeige
+                    ergebnis.Add(p);
+                } // Ende for
 
-                        // Person-Objekt in die Liste für die Anzeige
-                        ergebnis.Add(p);
-                    } // Ende for
+                // Daten anzeigen
+                view.aktualisiereSicht(ergebnis);
 
-                    // Daten anzeigen
-                    view.aktualisiereSicht(ergebnis);
+            } // End if
 
-                } // End if
+            client.close();
 
-                client.close();
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
 
         }
 
