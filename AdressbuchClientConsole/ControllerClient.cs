@@ -59,7 +59,10 @@ namespace Adressbuch
                 case 2:
                     holeAdressbuch();
                     break;
-
+                // Person hinzufuegen
+                case 3:
+                    fügeHinzuNeuePerson();
+                    break;
                 case 9:
                     break;
 
