@@ -43,10 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\common\ClientSocket.cs">
+      <Link>ClientSocket.cs</Link>
+    </Compile>
     <Compile Include="..\common\Person.cs">
       <Link>Person.cs</Link>
     </Compile>
-    <Compile Include="ClientSocket.cs" />
     <Compile Include="ControllerServer.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Program.cs" />

@@ -66,6 +66,7 @@ namespace Adressbuch
 
             // Geburtsdatum umformen, um ein DateTime-Objekt
             // zu erstellen
+            Console.WriteLine(_p);
             char[] trenner = { '.', '/' };
             string[] geburtsdatum = daten[3].Split(trenner);
 

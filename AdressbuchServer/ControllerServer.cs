@@ -126,7 +126,6 @@ namespace Adressbuch
                     if (data.Contains('\n'))
                         throw new InvalidOperationException();
                     _c.write(data + "\n");
-                    Thread.Sleep(250);
                 }
             }
         }
@@ -152,7 +151,6 @@ namespace Adressbuch
                     if (data.Contains('\n'))
                         throw new InvalidOperationException();
                     _c.write(data + "\n");
-                    Thread.Sleep(250);
                 }
             }
         }

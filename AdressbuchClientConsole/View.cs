@@ -43,9 +43,6 @@ namespace Adressbuch
         {
             string person = "";
 
-            // Erstelle Personenobjekt mit Standartwerten
-            Person p = new Person("v", "n", "p", DateTime.Today, 0);
-
 			var properties = typeof(Person).GetProperties();
 
             foreach (var pair in properties)
