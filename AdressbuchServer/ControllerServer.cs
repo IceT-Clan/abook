@@ -183,7 +183,7 @@ namespace Adressbuch
 				Console.WriteLine(id);
 			}
 
-			for (uint i = 1; i < used_ids.Count(); i++)
+			for (uint i = 1; i <= used_ids.Count(); i++)
 			{
 				if(Array.Find(used_ids, element => element == i) == 0)
 				{
