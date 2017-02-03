@@ -207,7 +207,7 @@ namespace Adressbuch
             // Hole Kontaktdaten für neue Person
             string person = view.fügeHinzuNeuePerson();
 
-            client.write(person);
+            client.write(person + "\n");
             client.close();
         }
 
