@@ -97,7 +97,6 @@ namespace Adressbuch
             Console.Write("Suchbegriff> ");
             string suchbegriff = Console.ReadLine();
 
-
             // Hier müsste eine Ausnahmebehandlung erfolgen
             // falls keine Verbindung möglich ist
             client = new ClientSocket(host, port);
@@ -109,7 +108,7 @@ namespace Adressbuch
             client.write((int)ServerCommand.FINDPERSONS);
 
             // Suchstring senden
-            client.write(suchbegriff);
+            client.write(suchbegriff + "\n");
 
             // Anzahl gefundener Personen lesen
             int anzahl = client.read();

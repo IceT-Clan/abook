@@ -103,6 +103,7 @@ namespace Adressbuch
         {
             // Lese Suchstring vom Client
             string suchbegriff = _c.readLine();
+			Console.WriteLine(suchbegriff);
 
             // Speichere die Ergebnisse in einer Liste
             List<Person> ergebnis = model.suchePersonen(suchbegriff);
