@@ -10,18 +10,25 @@ namespace Adressbuch
     {
         public string Vorname { get; set; }
         public string Name { get; set; }
-        public string Plz { get; set; }
         public DateTime Geburtstag { get; set; }
-
+        public string Plz { get; set; }
+        public string Adresse { get; set; }
+        public string Hausnummer { get; set; }
+        public string Festnetznummer { get; set; }
+        public string Mobiltelefon { get; set; }
         public uint ID { get; set; }
 
-        public Person(string _v, string _n, string _p, DateTime _g, uint _id)
+        public Person(string _v, string _n, DateTime _g, string _p, string _a, string _h, string _f, string _m, uint _id)
         {
             Vorname = _v;
             Name = _n;
-            Plz = _p;
             Geburtstag = _g;
-            this.ID = _id;
+            Plz = _p;
+            Adresse = _a;
+            Hausnummer = _h;
+            Festnetznummer = _f;
+            Mobiltelefon = _m;
+            ID = _id;
         }
 
         public override string ToString()
