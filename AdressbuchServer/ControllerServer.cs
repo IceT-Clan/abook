@@ -168,38 +168,31 @@ namespace Adressbuch
 
 		private uint holeFreieID()
 		{
-			uint count = 0;
 			uint new_id = 0;
-			uint[] used_ids = new uint[model.personen.Count];
+            foreach(var p in model.personen)
+            {
+                Console.WriteLine(p.ID);
+            }
 
-			foreach (Person p in model.personen)
+			for (uint i = 1; i <= model.personen.Count; i++)
 			{
-				used_ids[count] += p.ID;
-				count++;
-			}
-			Array.Sort(used_ids);
-			foreach (uint id in used_ids)
-			{
-				Console.WriteLine(id);
-			}
-
-			for (uint i = 1; i <= used_ids.Count(); i++)
-			{
-				if(Array.Find(used_ids, element => element == i) == 0)
-				{
-					new_id = i;
-					break;
-				}
+                if(model.personen.Find(pers => pers.ID == i) == null)
+                {
+                    new_id = i;
+                    break;
+                }
 			}
 
-			Console.WriteLine("ID: " + new_id.ToString());
+			Console.WriteLine("Neue ID: " + new_id.ToString());
 
 			return new_id;
 		}
 
         private void loeschePerson(ClientSocket _c)
         {
-
+            var id = _c.readLine();
+            var res = model.löschePerson(Convert.ToUInt32(id));
+            _c.write(res.ToString() + "\n");      
         }
     }
 }
