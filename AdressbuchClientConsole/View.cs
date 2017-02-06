@@ -21,6 +21,7 @@ namespace Adressbuch
             Console.WriteLine("1 - Suche Personen");
             Console.WriteLine("2 - Hole Adressbuch");
             Console.WriteLine("3 - Neue Person hinzufuegen");
+            Console.WriteLine("4 - Person loeschen");
             Console.WriteLine("9 - Programmende");
             Console.Write("Ihre Auswahl> ");
         }
