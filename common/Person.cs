@@ -8,42 +8,19 @@ namespace Adressbuch
 {
     class Person
     {
-        private string vorname;
-        private string name;
-        private string plz;
-        private DateTime geburtstag;
-
-        public string Vorname
-        {
-            get { return vorname; }
-            set { vorname = value; }
-        }
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public string Plz
-        {
-            get { return plz; }
-            set { plz = value; }
-        }
-
-        public DateTime Geburtstag
-        {
-            get { return geburtstag; }
-            set { geburtstag = value; }
-        }
+        public string Vorname { get; set; }
+        public string Name { get; set; }
+        public string Plz { get; set; }
+        public DateTime Geburtstag { get; set; }
 
         public uint ID { get; set; }
 
         public Person(string _v, string _n, string _p, DateTime _g, uint _id)
         {
-            vorname = _v;
-            name = _n;
-            plz = _p;
-            geburtstag = _g;
+            Vorname = _v;
+            Name = _n;
+            Plz = _p;
+            Geburtstag = _g;
             this.ID = _id;
         }
 
