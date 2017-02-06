@@ -63,6 +63,9 @@ namespace Adressbuch
                 case 3:
                     fügeHinzuNeuePerson();
                     break;
+                case 4:
+                    loeschePerson();
+                    break;
                 case 9:
                     break;
 
@@ -71,6 +74,48 @@ namespace Adressbuch
             } // Ende switch
 
             return eingabe;
+        }
+
+        private void loeschePerson()
+        {
+            uint id = 0;
+
+            // Suchbegriff abfragen
+            Console.Write("ID> ");
+
+            try
+            {
+                id = Convert.ToUInt32(Console.ReadLine());
+            }
+            catch
+            {
+                return;
+            }
+
+            // Hier müsste eine Ausnahmebehandlung erfolgen
+            // falls keine Verbindung möglich ist
+            client = new ClientSocket(host, port);
+
+            // Verbindung mit Server herstellen
+            client.connect();
+
+            // Kommando senden
+            client.write((int)ServerCommand.DELETEPERSON);
+
+            // ID senden
+            client.write(id.ToString() + "\n");
+
+            // Bestätigung empfangen
+            bool ans = Convert.ToBoolean(client.readLine());
+
+            if (ans)
+            {
+                Console.WriteLine("Person mit ID " + id.ToString() + " erfolgreich geloescht.");
+            } else
+            {
+                Console.WriteLine("Keine Person mit dieser ID vorhanden.");
+            }
+            return;
         }
 
         private int menue()
@@ -82,7 +127,14 @@ namespace Adressbuch
             // Auswahl lesen
             do
             {
-                auswahl = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    auswahl = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+
+                }
             } while (auswahl < 1 || auswahl > 9);
 
             Console.WriteLine();
