@@ -155,6 +155,14 @@ namespace Adressbuch
                 }
             }
         }
+
+        public bool löschePerson(uint id)
+        {
+            if(personen.RemoveAll(person => person.ID == id) == 0)
+                return false;
+            schreibeAdressbuchDatei();
+            return true;
+        }
     }
 
 }
