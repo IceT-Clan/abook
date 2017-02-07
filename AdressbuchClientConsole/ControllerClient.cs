@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using __ClientSocket__;
 
 namespace Adressbuch
@@ -11,7 +12,7 @@ namespace Adressbuch
     {
         NONE,
         FINDPERSONS,
-        GETALLPERSONS,
+        GETFILE,
         ADDPERSON,
         DELETEPERSON
     }
@@ -200,49 +201,38 @@ namespace Adressbuch
             // Hier müsste eine Ausnahmebehandlung erfolgen
             // falls keine Verbindung möglich ist
             client = new ClientSocket(host, port);
-            try
-            {
-                // Verbindung mit Server herstellen
-                client.connect();
 
-                // Kommando senden
-                client.write((int)ServerCommand.GETALLPERSONS);
+			// Verbindung mit Server herstellen
+			client.connect();
 
-                // Anzahl gefundener Personen lesen
-                int anzahl = client.read();
+			// Kommando senden
+			client.write((int)ServerCommand.GETFILE);
 
-                Console.WriteLine("Anzahl gefundener Personen: {0}", anzahl);
+			// Groeße der Datei empfangen
+			int size = client.read();
 
-                if (anzahl > 0)
-                {
-                    List<Person> ergebnis = new List<Person>();
+			Console.WriteLine("Dateigroesse: {0}", size);
 
-                    for (int i = 0; i < anzahl; i++)
-                    {
-                        string person = client.readLine();
+			Console.Write("Speicherort> ");
+			string filename = Console.ReadLine();
 
-                        // Testausgabe
-                        // Console.WriteLine(person);
+			if (size > 0)
+			{
+				try
+				{
+					byte[] file = new byte[size];
+					client.read(file, size);
+					File.WriteAllBytes(filename, file);
+				}
+				catch
+				{
+					Console.WriteLine("Adressbuchdatei konnte nicht empfangen werden.");
+					return;
+				}
+			}
 
-                        // Person-Objekt aus empfangenem String
-                        Person p = Person.FromString(person);
-
-                        // Person-Objekt in die Liste für die Anzeige
-                        ergebnis.Add(p);
-                    } // Ende for
-
-                    // Daten anzeigen
-                    view.aktualisiereSicht(ergebnis);
-
-                } // End if
-
-                client.close();
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+			Console.WriteLine("Adressbuchdatei erfolgreich gespeichert.\n");
+			client.close();
         }
 
 		private void fügeHinzuNeuePerson()

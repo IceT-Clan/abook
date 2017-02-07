@@ -48,6 +48,10 @@ namespace __ClientSocket__
             msg[0] = (byte)b;
             socket.Send(msg);
         }
+		public void write(byte[] b)
+		{
+			socket.Send(b);
+		}
         public void write(string s)
         {
             byte[] msg = Encoding.UTF8.GetBytes(s);
