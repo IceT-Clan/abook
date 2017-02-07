@@ -31,12 +31,59 @@ namespace Adressbuch
 		{
             foreach (var pair in typeof(Person).GetProperties())
 			{
-				Console.Write(pair.Name + "[" + pair.GetValue(p) + "]" + ": ");
-
-				string input = Console.ReadLine();
-				if (input != "")
+				bool error = true;
+				while (error)
 				{
-					pair.SetValue(p, input);
+					error = true;
+					if (pair.Name == "ID")
+					{
+						error = false;
+						continue;
+					}
+
+					if (pair.Name == "Geburtstag")
+					{
+						DateTime g = Convert.ToDateTime(pair.GetValue(p));
+						Console.Write(pair.Name + "[" + g.Day + "." + g.Month + "." + g.Year + "]" + ": ");
+					}
+					else
+					{
+						Console.Write(pair.Name + "[" + pair.GetValue(p) + "]" + ": ");
+					}
+
+					string input = Console.ReadLine();
+					if (input != "")
+					{
+						if (pair.Name == "Geburtstag")
+						{
+							DateTime g = Convert.ToDateTime(input);
+							pair.SetValue(p, g);
+							error = false;
+						}
+						else if (pair.Name == "Festnetz" || pair.Name == "Mobiltelefon")
+						{
+							int val;
+							if (int.TryParse(input, out val))
+							{
+								Console.WriteLine("1");
+								pair.SetValue(p, input);
+								error = false;
+							}
+							else
+							{
+								Console.WriteLine("2");
+								error = true;
+							}
+						}
+						else
+						{
+							pair.SetValue(p, input);
+							error = false;
+						}
+					}
+					else {
+						error = false;
+					}
 				}
 			}
 
