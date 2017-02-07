@@ -112,7 +112,7 @@ namespace Adressbuch
             List<Person> ergebnis = model.suchePersonen(suchbegriff);
 
             // Sende Client die Anzahl der gefundenen Personen
-            _c.write(ergebnis.Count);
+            _c.write(ergebnis.Count + "\n");
 
             // Sende nun die Personendaten
             if (ergebnis.Count > 0)

@@ -73,10 +73,10 @@ namespace __ClientSocket__
             byte[] rcvbuffer = new byte[1];
             rcvbuffer[0] = 0;
 
+			System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
             while (rcvbuffer[0] != '\n')
             {
                 socket.Receive(rcvbuffer);
-                System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
                 rcv += enc.GetString(rcvbuffer);
             }
 

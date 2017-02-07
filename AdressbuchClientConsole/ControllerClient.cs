@@ -212,7 +212,7 @@ namespace Adressbuch
             client.write(suchbegriff + "\n");
 
             // Anzahl gefundener Personen lesen
-            int anzahl = client.read();
+            int anzahl = Convert.ToInt32(client.readLine());
 
             Console.WriteLine("Anzahl gefundener Personen: {0}", anzahl);
 
