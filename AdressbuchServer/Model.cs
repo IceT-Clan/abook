@@ -35,18 +35,9 @@ namespace Adressbuch
 
             foreach (Person p in personen)
             {
-                if (p.Vorname.Contains(wert) ||
-                    p.Name.Contains(wert) ||
-                    p.Plz.Contains(wert)
-                   )
+                if (p.Vorname.Contains(wert) || p.Name.Contains(wert) || p.Plz.Contains(wert))
                 {
-                    Person newPerson = new Person(p.Vorname,
-                                                  p.Name,
-                                                  p.Plz,
-                                                  p.Geburtstag,
-                                                  p.ID
-                                                 );
-                    ergebnis.Add(newPerson);
+                    ergebnis.Add(p);
                 }
             }
 

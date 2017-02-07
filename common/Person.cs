@@ -14,7 +14,7 @@ namespace Adressbuch
         public string Plz { get; set; }
         public string Adresse { get; set; }
         public string Hausnummer { get; set; }
-        public string Festnetznummer { get; set; }
+        public string Festnetz { get; set; }
         public string Mobiltelefon { get; set; }
         public uint ID { get; set; }
 
@@ -26,7 +26,7 @@ namespace Adressbuch
             Plz = _p;
             Adresse = _a;
             Hausnummer = _h;
-            Festnetznummer = _f;
+            Festnetz = _f;
             Mobiltelefon = _m;
             ID = _id;
         }
@@ -36,9 +36,23 @@ namespace Adressbuch
             string person = "";
 
             // Hier wird ein Person-Objekt in den String umgeformt
-            var g = this.Geburtstag;
-            person = this.Vorname + ";" + this.Name + ";" + this.Plz + ";" + g.Day + "." + g.Month + "." + g.Year;
-			person += ";" + this.ID;
+			foreach (var pair in typeof(Person).GetProperties())
+			{
+				if (pair.Name == "Geburtstag")
+				{
+					DateTime g = (DateTime)pair.GetValue(this);
+					person += g.Day + "." + g.Month + ".";
+					person += g.Year + ";";
+				}
+				else if (pair.Name != "ID")
+				{
+					person += pair.GetValue(this) + ";";
+				}
+				else
+				{
+					person += pair.GetValue(this);
+				}
+			}
 
             return person;
         }
@@ -47,12 +61,24 @@ namespace Adressbuch
         {
             char[] separator = { ';' };
             string[] daten = _p.Split(separator);
+			// daten[0] : Vorname
+			// daten[1] : Name
+			// daten[2] : Geburtstag
+			// daten[3] : PLZ
+			// daten[4] : Adresse
+			// daten[5] : Hausnummer
+			// daten[6] : Festnetz
+			// daten[7] : Mobiltelefon
+			// daten[8] : ID
 
             // Geburtsdatum umformen, um ein DateTime-Objekt
             // zu erstellen
-            Console.WriteLine(_p);
+			foreach (var data in daten)
+			{
+				Console.WriteLine(data);
+			}
             char[] trenner = { '.', '/' };
-            string[] geburtsdatum = daten[3].Split(trenner);
+            string[] geburtsdatum = daten[2].Split(trenner);
 
             int tag = Convert.ToInt32(geburtsdatum[0]);
             int monat = Convert.ToInt32(geburtsdatum[1]);
@@ -61,8 +87,8 @@ namespace Adressbuch
             DateTime datum = new DateTime(jahr, monat, tag);
 
             // Person-Objekt erstellen und der Liste hinzufügen
-            Person p = new Person(daten[0], daten[1], daten[2], datum, Convert.ToUInt32(daten[4]));
-
+            Person p = new Person(daten[0], daten[1], datum, daten[3], daten[4], daten[5], daten[6],
+								  daten[7], Convert.ToUInt32(daten[8]));
             return p;
         }
 

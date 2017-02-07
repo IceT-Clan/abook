@@ -33,7 +33,15 @@ namespace Adressbuch
 				var properties = typeof(Person).GetProperties();
 				foreach (var pair in properties)
 				{
-					Console.WriteLine(pair.Name + ": " + pair.GetValue(p));
+					if (pair.Name == "Geburtstag")
+					{
+						DateTime g = (DateTime)pair.GetValue(p);
+						Console.WriteLine(pair.Name + ": " + g.ToString("dd.MM.yyyy"));
+					}
+					else
+					{
+						Console.WriteLine(pair.Name + ": " + pair.GetValue(p));
+					}
 				}
                 Console.WriteLine("======================================");
                 Console.WriteLine();

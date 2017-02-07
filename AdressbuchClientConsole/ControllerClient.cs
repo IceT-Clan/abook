@@ -54,7 +54,6 @@ namespace Adressbuch
                 case 1:
                     suchePersonen();
                     break;
-
                 // Hole Adressbuch
                 case 2:
                     holeAdressbuch();
@@ -63,6 +62,7 @@ namespace Adressbuch
                 case 3:
                     fügeHinzuNeuePerson();
                     break;
+				// Person loeschen
                 case 4:
                     loeschePerson();
                     break;

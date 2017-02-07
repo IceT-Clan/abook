@@ -103,7 +103,7 @@ namespace Adressbuch
         {
             // Lese Suchstring vom Client
             string suchbegriff = _c.readLine();
-			Console.WriteLine(suchbegriff);
+			Console.WriteLine("Suche nach: " + suchbegriff);
 
             // Speichere die Ergebnisse in einer Liste
             List<Person> ergebnis = model.suchePersonen(suchbegriff);
@@ -118,9 +118,7 @@ namespace Adressbuch
 
                 foreach (Person p in ergebnis)
                 {
-                    string data = p.Vorname + separator + p.Name + separator;
-                    data += p.Plz + separator + p.Geburtstag.Date.ToShortDateString() + separator;
-					data += p.ID;
+                    string data = p.ToString();
 
                     // Testausgabe
                     Console.WriteLine(data);
@@ -143,9 +141,7 @@ namespace Adressbuch
 
                 foreach (Person p in model.personen)
                 {
-                    string data = p.Vorname + separator + p.Name + separator;
-                    data += p.Plz + separator + p.Geburtstag.Date.ToShortDateString() + separator;
-					data += p.ID;
+                    string data = p.ToString();
 
                     // Testausgabe
                     Console.WriteLine(data);
