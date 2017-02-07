@@ -35,15 +35,33 @@ namespace Adressbuch
 
             foreach (Person p in personen)
             {
-                if (p.Vorname.Contains(wert) || p.Name.Contains(wert) || p.Plz.Contains(wert))
-                {
-                    ergebnis.Add(p);
-                }
+				foreach (var pair in typeof(Person).GetProperties())
+				{
+					string val = pair.GetValue(p).ToString();
+					if (val.Contains(wert))
+					{
+						ergebnis.Add(p);
+						break;
+					}
+				}
             }
 
             return ergebnis;
 
         }
+
+		public Person suchePersonMitID(uint id)
+		{
+			foreach (Person p in personen)
+			{
+				if (p.ID == id)
+				{
+					return p;
+				}
+			}
+			
+			return new Person();
+		}
 
         // Liest die Datei adressbuch.txt und erstellt Person-Objekte
         private bool leseAdressbuchDatei(string _addrbook_file)

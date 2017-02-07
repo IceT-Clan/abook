@@ -18,6 +18,7 @@ namespace Adressbuch
         public string Mobiltelefon { get; set; }
         public uint ID { get; set; }
 
+		public Person() {}
         public Person(string _v, string _n, DateTime _g, string _p, string _a, string _h, string _f, string _m, uint _id)
         {
             Vorname = _v;
