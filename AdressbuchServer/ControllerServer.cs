@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.IO;
 using __ServerSocket__;
 using __ClientSocket__;
 
@@ -12,7 +13,7 @@ namespace Adressbuch
     {
         NONE,
         FINDPERSONS,
-        GETALLPERSONS,
+        GETFILE,
         ADDPERSON,
         DELETEPERSON
     }
@@ -27,10 +28,13 @@ namespace Adressbuch
     {
         private Model model;
         private ServerSocket server;
+		private string addrbook_file;
 
         public ControllerServer(int _port, string _addrbook_file)
         {
-            model = new Model(_addrbook_file);
+			addrbook_file = _addrbook_file;
+
+            model = new Model(addrbook_file);
 
             // Hier sollte eine Ausnahmebehandlung stattfinden
             // für den Fall, dass der Port bereits anderweitig
@@ -74,8 +78,8 @@ namespace Adressbuch
                         suchePersonen(client);
                         break;
 
-                    case ServerCommand.GETALLPERSONS:
-                        holeAllePersonen(client);
+                    case ServerCommand.GETFILE:
+                        holeAdressbuch(client);
                         break;
 
                     case ServerCommand.ADDPERSON:
@@ -129,27 +133,17 @@ namespace Adressbuch
             }
         }
 
-        private void holeAllePersonen(ClientSocket _c)
+		// Sende die Adressbuchdatei
+        private void holeAdressbuch(ClientSocket _c)
         {
-            // Sende Client die Anzahl der gefundenen Personen
-            _c.write(model.personen.Count);
+			System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+			byte[] fileData = File.ReadAllBytes(addrbook_file);
 
-            // Sende nun die Personendaten
-            if (model.personen.Count > 0)
-            {
-                string separator = ";";
+            // Sende Client die Große der Datei
+            _c.write(fileData.Length);
 
-                foreach (Person p in model.personen)
-                {
-                    string data = p.ToString();
-
-                    // Testausgabe
-                    Console.WriteLine(data);
-                    if (data.Contains('\n'))
-                        throw new InvalidOperationException();
-                    _c.write(data + "\n");
-                }
-            }
+			// Sende Datei
+			_c.write(fileData);
         }
 
         private void fügeHinzuNeuePerson(ClientSocket _c)

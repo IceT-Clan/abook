@@ -73,10 +73,6 @@ namespace Adressbuch
 
             // Geburtsdatum umformen, um ein DateTime-Objekt
             // zu erstellen
-			foreach (var data in daten)
-			{
-				Console.WriteLine(data);
-			}
             char[] trenner = { '.', '/' };
             string[] geburtsdatum = daten[2].Split(trenner);
 
@@ -91,6 +87,5 @@ namespace Adressbuch
 								  daten[7], Convert.ToUInt32(daten[8]));
             return p;
         }
-
     }
 }
