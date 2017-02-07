@@ -15,6 +15,7 @@ namespace Adressbuch
         FINDPERSONS,
         GETFILE,
         ADDPERSON,
+        EDITPERSON,
         DELETEPERSON
     }
 
@@ -73,23 +74,21 @@ namespace Adressbuch
                 {
                     case ServerCommand.NONE:
                         break;
-
                     case ServerCommand.FINDPERSONS:
                         suchePersonen(client);
                         break;
-
                     case ServerCommand.GETFILE:
                         holeAdressbuch(client);
                         break;
-
                     case ServerCommand.ADDPERSON:
                         fügeHinzuNeuePerson(client);
                         break;
-
+					case ServerCommand.EDITPERSON:
+						bearbeitePerson(client);
+						break;
                     case ServerCommand.DELETEPERSON:
                         loeschePerson(client);
                         break;
-
                     default:
                         break;
                 } // Ende switch
@@ -124,8 +123,6 @@ namespace Adressbuch
                 {
                     string data = p.ToString();
 
-                    // Testausgabe
-                    Console.WriteLine(data);
                     if (data.Contains('\n'))
                         throw new InvalidOperationException();
                     _c.write(data + "\n");
@@ -146,6 +143,30 @@ namespace Adressbuch
 			_c.write(fileData);
         }
 
+        private void bearbeitePerson(ClientSocket _c)
+		{
+			// ID empfangen
+            uint id = Convert.ToUInt32(_c.readLine());
+
+			// Person mit dieser ID senden
+			string pers = model.suchePersonMitID(id).ToString() + "\n";
+			_c.write(pers);
+
+			// Bearbeitete Person empfangen
+			string new_pers = _c.readLine();
+
+			// Alte Person löschen
+            if (!model.löschePerson(Convert.ToUInt32(id)))
+			{
+				return;
+			}
+
+			// Neue Person hinzufügen
+			model.fügeHinzuNeuePerson(new_pers);
+
+			return;
+		}
+
         private void fügeHinzuNeuePerson(ClientSocket _c)
         {
             string person = _c.readLine();
@@ -159,10 +180,6 @@ namespace Adressbuch
 		private uint holeFreieID()
 		{
 			uint new_id = 0;
-            foreach(var p in model.personen)
-            {
-                Console.WriteLine(p.ID);
-            }
 
 			for (uint i = 1; i <= model.personen.Count; i++)
 			{

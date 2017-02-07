@@ -22,9 +22,27 @@ namespace Adressbuch
             Console.WriteLine("2 - Hole Adressbuch");
             Console.WriteLine("3 - Neue Person hinzufuegen");
             Console.WriteLine("4 - Person loeschen");
+            Console.WriteLine("5 - Person bearbeiten");
             Console.WriteLine("9 - Programmende");
             Console.Write("Ihre Auswahl> ");
         }
+
+		public Person bearbeitePerson(Person p)
+		{
+            foreach (var pair in typeof(Person).GetProperties())
+			{
+				Console.Write(pair.Name + "[" + pair.GetValue(p) + "]" + ": ");
+
+				string input = Console.ReadLine();
+				if (input != "")
+				{
+					pair.SetValue(p, input);
+				}
+			}
+
+			return p;
+		}
+
         public void aktualisiereSicht(List<Person> _personen)
         {
             foreach (Person p in _personen)

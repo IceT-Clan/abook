@@ -14,6 +14,7 @@ namespace Adressbuch
         FINDPERSONS,
         GETFILE,
         ADDPERSON,
+        EDITPERSON,
         DELETEPERSON
     }
 
@@ -67,6 +68,10 @@ namespace Adressbuch
                 case 4:
                     loeschePerson();
                     break;
+				// Person bearbeiten
+				case 5:
+					bearbeitePerson();
+					break;
                 case 9:
                     break;
 
@@ -76,6 +81,48 @@ namespace Adressbuch
 
             return eingabe;
         }
+
+        private void bearbeitePerson()
+		{
+            uint id = 0;
+
+            // Suchbegriff abfragen
+            Console.Write("ID> ");
+
+            try
+            {
+                id = Convert.ToUInt32(Console.ReadLine());
+				if (id == 0) return;
+            }
+            catch
+            {
+                return;
+            }
+
+            // Hier müsste eine Ausnahmebehandlung erfolgen
+            // falls keine Verbindung möglich ist
+            client = new ClientSocket(host, port);
+
+            // Verbindung mit Server herstellen
+            client.connect();
+
+            // Kommando senden
+            client.write((int)ServerCommand.EDITPERSON);
+
+            // ID senden
+            client.write(id.ToString() + "\n");
+
+			// Person empfangen
+			string pers = client.readLine();
+			Console.WriteLine(pers);
+			Person p = Person.FromString(pers);
+
+			// Person bearbeiten
+			p = view.bearbeitePerson(p);
+			
+			// Bearbeitete Person senden
+			client.write(p.ToString() + "\n");
+		}
 
         private void loeschePerson()
         {
@@ -87,6 +134,7 @@ namespace Adressbuch
             try
             {
                 id = Convert.ToUInt32(Console.ReadLine());
+				if (id == 0) return;
             }
             catch
             {
