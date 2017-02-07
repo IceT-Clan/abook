@@ -257,7 +257,7 @@ namespace Adressbuch
 			client.write((int)ServerCommand.GETFILE);
 
 			// Groeße der Datei empfangen
-			int size = client.read();
+			int size = Convert.ToInt32(client.readLine());
 
 			Console.WriteLine("Dateigroesse: {0}", size);
 
@@ -269,7 +269,10 @@ namespace Adressbuch
 				try
 				{
 					byte[] file = new byte[size];
-					client.read(file, size);
+					for (int i = 0; i < size; i++)
+					{
+						file[i] = (byte)client.read();
+					}
 					File.WriteAllBytes(filename, file);
 				}
 				catch

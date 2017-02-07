@@ -42,20 +42,20 @@ namespace __ClientSocket__
         {
             return socket.Available;
         }
-        public void write(int b)
+        public int write(int b)
         {
             byte[] msg = new byte[1];
             msg[0] = (byte)b;
-            socket.Send(msg);
+            return socket.Send(msg);
         }
-		public void write(byte[] b)
+		public int write(byte[] b)
 		{
-			socket.Send(b);
+			return socket.Send(b);
 		}
-        public void write(string s)
+        public int write(string s)
         {
             byte[] msg = Encoding.UTF8.GetBytes(s);
-            socket.Send(msg);
+            return socket.Send(msg);
         }
         public int read()
         {

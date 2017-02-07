@@ -137,10 +137,10 @@ namespace Adressbuch
 			byte[] fileData = File.ReadAllBytes(addrbook_file);
 
             // Sende Client die Große der Datei
-            _c.write(fileData.Length);
+            Console.WriteLine(_c.write(fileData.Length + "\n"));
 
 			// Sende Datei
-			_c.write(fileData);
+			Console.WriteLine(_c.write(fileData));
         }
 
         private void bearbeitePerson(ClientSocket _c)
