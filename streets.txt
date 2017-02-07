@@ -17120,7 +17120,6 @@ Bohlerstraße
 Böhler Straße
 Böhlgasse
 Bohligstraße
-Bohligstraße;Johannes-Sefrit-Straße;Johannes-Sefrit-Straße
 Böhligweg
 Bohlinger Straße
 Böhlitzer Mühle
@@ -19053,7 +19052,7 @@ Brunnenstieg
 Brunnenstr.
 Brunnenstrasse
 Brunnenstraße
-Brunnenstraße
+Brunnenstraße
 Brunnen Straße
 Brunnenstraße;Roseller Kirchstraße
 Brunnenweg
@@ -44982,7 +44981,7 @@ Immenweg
 Im Merbecker Busch
 Immergrünstraße
 Immergrünweg
-Immermannstra�e
+Immermannstraße
 Immermannstraße
 Im Mersch
 Im Merzental
@@ -64939,7 +64938,7 @@ Obere Heide
 Obere Heulandsteige
 Obere Hilgenstock
 Obere Hillegosser Straße
-Obere Hindenburgstra�e
+Obere Hindenburgstraße
 Obere Hochstraße
 Obere Holzgasse
 Obere Hommeswiese
@@ -84742,7 +84741,7 @@ Tiefenbacherösch
 Tiefenbacherstraße
 Tiefenbacher Straße
 Tiefenbachstraße
-Tiefenbachtalstra�e
+Tiefenbachtalstraße
 Tiefenbachtalstraße
 Tiefenbachweg
 Tiefenbachwiesen
@@ -85576,7 +85575,6 @@ Tulbeckstraße
 Tulengasse
 Tullastaffel
 Tullastraße
-‎Tullastraße
 Tulla-Straße
 Tüllinghofer Straße
 Tüllinghoff
@@ -90170,7 +90168,7 @@ Weihers
 Weihersgrund
 Weihersiedlung
 Weihersmühle
-Weiherstra�e
+Weiherstraße
 Weiherstraße
 Weiher Straße
 Weihertalstraße

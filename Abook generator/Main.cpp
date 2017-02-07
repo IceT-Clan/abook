@@ -90,6 +90,8 @@ int main() {
 			person += to_wstring(rand() % 89999 + 10000) + to_wstring(rand() % 89999 + 10000) + L";"; //telefon
 			person += to_wstring(rand() % 89999 + 10000) + to_wstring(rand() % 89999 + 10000) + L";"; //mobil telefon
 
+			person += to_wstring(count) + L";"; //id
+
 			output << person << endl;
 			static std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 			if (do_output) cout << converter.to_bytes(person) << endl;
