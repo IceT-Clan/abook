@@ -12,12 +12,14 @@ namespace Adressbuch
     // zur Verfügung
     class Model
     {
+        string addrbook_file;
         // Objektvariable für Zugriff auf Liste
         public List<Person> personen { get; private set; }
 
 
         public Model(string _addrbook_file)
         {
+            addrbook_file = _addrbook_file;
             // Leere Liste erstellen
             personen = new List<Person>();
 
@@ -25,7 +27,7 @@ namespace Adressbuch
             // Person-Objekte erstellen und
             // der Liste hinzufügen
 
-            leseAdressbuchDatei(_addrbook_file);
+            leseAdressbuchDatei();
         }
 
         public List<Person> suchePersonen(string wert)
@@ -64,28 +66,32 @@ namespace Adressbuch
 		}
 
         // Liest die Datei adressbuch.txt und erstellt Person-Objekte
-        private bool leseAdressbuchDatei(string _addrbook_file)
+        private bool leseAdressbuchDatei()
         {
-            // Hiermit könnte Erfolg oder Misserfolg der
-            // Methode zurückgemeldet werden
-            // Besser wäre, bei Misserfolg eine Ausnahme zu werfen
-            bool rc = true;
-
             // automatische Freigabe der Ressource mittels using
-            StreamReader sr = new StreamReader(_addrbook_file);
-            string zeile;
-            // Lesen bis Dateiende, Zeile für Zeile
-            while ( ( zeile = sr.ReadLine() ) != null )
+            StreamReader sr;
+            try
             {
-                // Person-Objekt erstellen anhand gelesener Zeile
-                Person p = Person.FromString(zeile);
+                sr = new StreamReader(addrbook_file);
+                string zeile;
+                // Lesen bis Dateiende, Zeile für Zeile
+                while ((zeile = sr.ReadLine()) != null)
+                {
+                    // Person-Objekt erstellen anhand gelesener Zeile
+                    Person p = Person.FromString(zeile);
 
-                // Person-Objekt in die Liste einfügen
-                personen.Add(p);
+                    // Person-Objekt in die Liste einfügen
+                    personen.Add(p);
+                }
+                sr.Close();
             }
-            sr.Close();
+            catch
+            {
+                Console.WriteLine("Adressbuchdatei konnte nicht geöffnet werden");
+                Environment.Exit(1);
+            }
 
-            return rc;
+            return true;
         }
 
         // Schreibt die Person-Objekte in die Datei adressbuch.csv
@@ -94,7 +100,7 @@ namespace Adressbuch
 
             try
             {
-                using (var sw = new StreamWriter(@"adressbuch.csv"))
+                using (var sw = new StreamWriter(addrbook_file))
                 {
                     foreach (var p in personen)
                     {
