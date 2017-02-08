@@ -72,11 +72,12 @@ namespace Adressbuch
             bool rc = true;
 
             // automatische Freigabe der Ressource mittels using
-            StreamReader sr = new StreamReader(_addrbook_file);
+            StreamReader sr = new StreamReader(_addrbook_file, Encoding.GetEncoding(1252), true);
             string zeile;
             // Lesen bis Dateiende, Zeile für Zeile
             while ( ( zeile = sr.ReadLine() ) != null )
             {
+
                 // Person-Objekt erstellen anhand gelesener Zeile
                 Person p = Person.FromString(zeile);
 

@@ -54,7 +54,7 @@ namespace __ClientSocket__
 		}
         public int write(string s)
         {
-            byte[] msg = Encoding.UTF8.GetBytes(s);
+            byte[] msg = Encoding.GetEncoding(1252).GetBytes(s);
             return socket.Send(msg);
         }
         public int read()
@@ -73,7 +73,8 @@ namespace __ClientSocket__
             byte[] rcvbuffer = new byte[1];
             rcvbuffer[0] = 0;
 
-			System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+            //System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+            Encoding enc = Encoding.GetEncoding(1252);
             while (rcvbuffer[0] != '\n')
             {
                 socket.Receive(rcvbuffer);
