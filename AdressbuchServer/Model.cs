@@ -72,7 +72,7 @@ namespace Adressbuch
             StreamReader sr;
             try
             {
-                sr = new StreamReader(addrbook_file);
+                sr = new StreamReader(addrbook_file, Encoding.GetEncoding(1252), true);
                 string zeile;
                 // Lesen bis Dateiende, Zeile für Zeile
                 while ((zeile = sr.ReadLine()) != null)
@@ -100,7 +100,7 @@ namespace Adressbuch
 
             try
             {
-                using (var sw = new StreamWriter(addrbook_file))
+                using (var sw = new StreamWriter(addrbook_file, true, Encoding.GetEncoding(1252)))
                 {
                     foreach (var p in personen)
                     {
