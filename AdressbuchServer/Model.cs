@@ -68,6 +68,7 @@ namespace Adressbuch
         // Liest die Datei adressbuch.txt und erstellt Person-Objekte
         private bool leseAdressbuchDatei()
         {
+            personen.Clear();
             // automatische Freigabe der Ressource mittels using
             StreamReader sr;
             try
