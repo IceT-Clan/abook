@@ -31,11 +31,19 @@ namespace Adressbuch
                         case "/port":
                             port = Convert.ToInt32(argument[1]);
                             break;
-
                         case "/host":
                             host = Convert.ToString(argument[1]);
                             break;
-
+                        case "/help":
+                            Console.WriteLine("Kommando" + "\t" + "Beschreibung          " + "\t" + "Standardwert");
+                            Console.WriteLine("--------" + "\t" + "----------------------" + "\t" + "------------");
+                            Console.WriteLine("/port   " + "\t" + "Angabe des Serverports" + "\t" + "5555        ");
+                            Console.WriteLine("/host   " + "\t" + "IP des Servers        " + "\t" + "127.0.0.1");
+                            Console.WriteLine("");
+                            Console.WriteLine("----------------------------------------------------");
+                            //Console.WriteLine("");
+                            Console.WriteLine("Tipp: Eine leere Suche gibt alle Personen im Adressbuch zurück");
+                            return;
                         default:
                             break;
                     } // Ende switch

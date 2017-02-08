@@ -34,6 +34,12 @@ namespace Adressbuch
                         case "/file":
                             addrbook_file = Convert.ToString(argument[1]);
                             break;
+                        case "/help":
+                            Console.WriteLine("Kommando" + "\t" + "Beschreibung                   " + "\t" + "Standardwert");
+                            Console.WriteLine("--------" + "\t" + "-------------------------------" + "\t" + "------------");
+                            Console.WriteLine("/port   " + "\t" + "Angabe des Serverports         " + "\t" + "5555        ");
+                            Console.WriteLine("/file   " + "\t" + "Speicherort der Adressbuchdatei" + "\t" + "./adressbuch.csv");
+                            return;
                         default:
                             break;
                     }
