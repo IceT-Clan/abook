@@ -101,7 +101,7 @@ namespace Adressbuch
 
             try
             {
-                using (var sw = new StreamWriter(addrbook_file, true, Encoding.GetEncoding(1252)))
+                using (var sw = new StreamWriter(addrbook_file, false, Encoding.GetEncoding(1252)))
                 {
                     foreach (var p in personen)
                     {
