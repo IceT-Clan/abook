@@ -18,13 +18,13 @@ namespace Adressbuch
             string addrbook_file = @"adressbuch.csv";
 
             // Eventuelle Argumente durchlaufen
-            if (args.Length > 1)
+            if (args.Length > 0)
             {
                 foreach (string arg in args)
                 {
                     // Argument: /port:12345
                     char[] separator = { ':' };
-                    string[] argument = arg.Split(separator);
+                    string[] argument = arg.Split(separator, 2);
 
                     switch (argument[0])
                     {
