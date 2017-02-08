@@ -181,7 +181,7 @@ namespace Adressbuch
 		{
 			uint new_id = 0;
 
-			for (uint i = 1; i <= model.personen.Count; i++)
+			for (uint i = Convert.ToUInt32(model.personen.Count); i >= 0; i--)
 			{
                 if(model.personen.Find(pers => pers.ID == i) == null)
                 {

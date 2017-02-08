@@ -1003,7 +1003,8 @@ Albert-Schweitzer-Lager
 Albert-Schweitzer-Ring
 Albert-Schweitzer Straße
 Albert-Schweitzer-Straße
-Albert - Schweitzer - Straße;Albertus - Magnus - Straße
+Albert - Schweitzer - Straße
+Albertus - Magnus - Straße
 Albert-Schweitzer-Weg
 Albert-Schweizer-Siedlung
 Albert-Schweizer-Straße
@@ -1022,7 +1023,8 @@ Albert-Tanneur-Straße
 Albert-Ueberle-Straße
 Albertus-Magnus-Platz
 Albertus-Magnus-Straße
-Albertus-Magnus-Straße;Albert- Schweitzer - Straße
+Albertus-Magnus-Straße
+Albert- Schweitzer - Straße
 Albertus-Magnus-Weg
 Albertusstraße
 Albertusweg
@@ -4328,7 +4330,8 @@ Am Gerhardsdamm
 Am Gerhardsfelsen
 Am Gerhardsplatz
 Am Gericht
-Am Gericht;Hauptstraße
+Am Gericht
+Hauptstraße
 Am Gerkenstein
 Am Gerlingbach
 Am Germanenring
@@ -13397,7 +13400,8 @@ B 44
 B501
 B53
 B54
-B54; B55
+B54
+B55
 B 70
 B 80
 Baaber Weg
@@ -13717,7 +13721,8 @@ Bahnhofstraße
 BAHNHOFSTRAßE
 Bahnhofstraße 23A
 Bahnhofstraße/Dornstraße
-Bahnhofstraße;Robert-Blum-Straße
+Bahnhofstraße
+Robert-Blum-Straße
 Bahnhofsvorplatz
 Bahnhofsweg
 Bahnhofswg
@@ -19054,7 +19059,8 @@ Brunnenstrasse
 Brunnenstraße
 Brunnenstraße
 Brunnen Straße
-Brunnenstraße;Roseller Kirchstraße
+Brunnenstraße
+Roseller Kirchstraße
 Brunnenweg
 Brunnenwiese
 Brunnenwiesen
@@ -19910,7 +19916,8 @@ Burggraben
 Burggrabenstraße
 Burggräfenröder Straße
 Burggrafenstraße
-Burggrafenstraße;Luegallee
+Burggrafenstraße
+Luegallee
 Burggrafenweg
 Burggraf-Friedrich-Straße
 Burg Gretesch
@@ -20873,7 +20880,8 @@ Christian-Knayer-Straße
 Christian-Kreuzer-Straße
 Christian-Kruse-Straße
 Christian-Lassen-Straße
-Christian-Lassen-Straße;Ernst-Robert-Curtius-Straße
+Christian-Lassen-Straße
+Ernst-Robert-Curtius-Straße
 Christian-Leichtle-Straße
 Christian-Lohse-Straße
 Christian-Ludwig-Bosse-Straße
@@ -25500,7 +25508,8 @@ Eisborner Dorfstraße
 Eisbrunnenweg
 Eisdorfer Straße
 Eisenacher Straße
-Eisenacher Straße;Hohenstaufenstraße
+Eisenacher Straße
+Hohenstaufenstraße
 Eisenacher Weg
 Eisenachweg
 Eisenackerhof
@@ -26995,7 +27004,8 @@ Ernst-Thälmannstraße
 Ernst Thälmann Straße
 Ernst-Thälmann Straße
 Ernst-Thälmann-Straße
-Ernst-Thälmann-Straße;Am Bahnhof
+Ernst-Thälmann-Straße
+Am Bahnhof
 Ernst-Thälmann-Weg
 Ernst-Thämann-Straße
 Ernst-Toepfer-Straße
@@ -29958,7 +29968,8 @@ Friedhofsgässchen
 Friedhofsgasse
 Friedhofsstraße
 Friedhofstraße
-Friedhofstraße; Wiedenangerweg
+Friedhofstraße
+Wiedenangerweg
 Friedhofsweg
 Friedhofweg
 Friedinger Straße
@@ -31897,7 +31908,8 @@ Georgenschwaigstraße
 Georgenstraße
 Georgenstraße / Ecke Friedrichstraße
 Georgenstraße/Ecke Nordendstraße
-Georgenstraße;Kirschweg
+Georgenstraße
+Kirschweg
 Georgenthaler Straße
 Georgenweg
 Georg-Ertel-Straße
@@ -35475,7 +35487,8 @@ Gutenbergring
 Gutenbergstr.
 Gutenbergstraße
 Gutenberg-Straße
-Gutenberg-Straße;Johannes-Sefrit-Straße
+Gutenberg-Straße
+Johannes-Sefrit-Straße
 Gutenbergweg
 Gutenburg
 Gutendorf
@@ -37622,9 +37635,12 @@ Hauptstraße
 Haupt Straße
 Hauptstraße.1
 Hauptstraße 12
-Hauptstraße; Häuserhofer Straße
-Hauptstraße;In den Osterwiesen
-Hauptstraße; Schäferberg
+Hauptstraße
+Häuserhofer Straße
+Hauptstraße
+In den Osterwiesen
+Hauptstraße
+Schäferberg
 HauptstraßeUnset
 Hauptübergang
 Hauptwachstraße
@@ -45795,7 +45811,8 @@ Im WInkel
 Im Winkele
 Im Winkelmoor
 Im Winkelrain
-Im Winkel;Schwalbenweg
+Im Winkel
+Schwalbenweg
 Im Winkelsgarten
 Im Winkfeld
 Im Winterrot
@@ -47278,7 +47295,8 @@ Jean-Inselsberger-Straße
 Jean-Jaurès-Straße
 Jean-Mathieu-Straße
 Jean-Paul-Straße
-Jean-Paul-Straße;Vinckestraße
+Jean-Paul-Straße
+Vinckestraße
 Jean-Paul-Weg
 Jean-Pullen-Weg
 Jean-Ritzert-Straße
@@ -47599,7 +47617,8 @@ Johannes-Schlaf-Straße
 Johannes-Schmidt-Straße
 Johannes-Schult-Weg
 Johannes-Sefrit-Straße
-Johannes-Sefrit-Straße;Keltenstraße
+Johannes-Sefrit-Straße
+Keltenstraße
 Johannes-Stelling-Straße
 Johannesstraße
 Johannes-Stumpf-Straße
@@ -59388,7 +59407,8 @@ Markscheiderstraße
 Marksteiner
 Markstockstraße
 Markstraße
-Markstraße;Kemnader Straße
+Markstraße
+Kemnader Straße
 Markststraße
 Marksweg
 Markt
@@ -59431,7 +59451,8 @@ Markttorstraße
 Markttwiete
 Mark-Twain-Straße
 Marktwasserweg
-Markt; Weender Straße
+Markt
+Weender Straße
 Marktweg
 Marktweide
 Marktwinkl
@@ -59963,7 +59984,8 @@ Max-Eichholz-Ring
 Max-Emanuel-Platz
 Maxener Straße
 Max-Ernst-Straße
-Max - Ernst - Straße;August - Macke - Straße
+Max - Ernst - Straße
+August - Macke - Straße
 Max-Eyth-Allee
 Max Eyth Straße
 Max-Eyth-Straße
@@ -63585,7 +63607,8 @@ Neukalener Straße
 Neukamp
 Neukirchen
 Neukirchener Straße
-Neukirchener Straße; Malvenweg
+Neukirchener Straße
+Malvenweg
 Neukirchener Weg
 Neukircher Straße
 Neukircher Weg
@@ -67410,7 +67433,8 @@ Parkgrund
 Parkgürtel
 Parkhaus Bonifaziusplatz
 Parkhaus Media Markt
-Parkhaus Messeturm; Friedrich Ebert Anlage
+Parkhaus Messeturm
+Friedrich Ebert Anlage
 Parkhaus Peiner Straße
 Parkhausweg
 Parkhofstraße
@@ -72746,7 +72770,8 @@ Rittermannshagen
 Ritter-Merz-Straße
 Ritterpassage
 Ritterplan
-Ritterplan; Burgstraße
+Ritterplan
+Burgstraße
 Ritterplatz
 Ritter-Raschen-Straße
 Rittersbachstraße
@@ -74690,7 +74715,8 @@ Rybnikstraße
 Rykestraße
 Rylevej
 Rymelsberg
-RZ Sieg: Verwaltungsgebäude; Friedrichstraße
+RZ Sieg: Verwaltungsgebäude
+Friedrichstraße
 S2
 S3
 S4
@@ -85848,7 +85874,8 @@ Ueckerstraße
 Ueddinger Straße
 Uedemer Straße
 Uedesheimer Straße
-Uedesheimerstraße;Müggenburgstraße
+Uedesheimerstraße
+Müggenburgstraße
 Uedingsweg
 Uelenbenderweg
 Uelitzer Straße
@@ -87017,7 +87044,6 @@ Vaihinger Landstraße
 Vaihinger Markt
 Vaihinger Straße
 Valberter Straße
-<val='Bertolt-Brecht-Straße',<Priority; inDataSet: false, inStandard: false, selected: false>>
 Valckenburgufer
 Valdagno-Platz
 Valdemarsgade
@@ -87047,16 +87073,13 @@ Valentinweg
 Valepperstraße
 Valepper Straße
 Valeppstraße
-<val='Erfurter Straße',<Priority; inDataSet: false, inStandard: false, selected: false>>
 Valeria-Kratina-Weg
 Valerieweg
 Valersgarten
 Valerystraße
 Valesistraße
-<val='Friedrich-List-Straße',<Priority; inDataSet: false, inStandard: false, selected: false>>
 Valkenburger Straße
 Valkenierstraße
-<val='Kurt-Tucholsky-Straße',<Priority; inDataSet: false, inStandard: false, selected: false>>
 Vallendarer Straße
 Valleyer Straße
 Valleyer Weg
@@ -87065,11 +87088,8 @@ Vallstedter Weg
 Valmestraße
 Valmeweg
 Valparaisostraße
-<val='Parkstraße',<Priority; inDataSet: false, inStandard: false, selected: false>>
 Valpichlerstraße
-<val='Röpziger Straße',<Priority; inDataSet: false, inStandard: false, selected: false>>
 Valterweg
-<val='Upsalastraße',<Priority; inDataSet: false, inStandard: false, selected: false>>
 Valve
 Valznerweiherstraße
 Van-Beethoven-Straße
@@ -94308,7 +94328,7 @@ Zolderstraße
 Zölestinstraße
 Zollamtsbogen
 Zollamtstraße
-Zollamtstraße;Bremerstraße
+Zollamtstraße\nBremerstraße
 Zollbrücke
 Zollenreuter Straße
 Zollenspieker Hauptdeich
